@@ -47,10 +47,26 @@ app.get('/search', (req, res) => {
 
 
   app.get('/movies/read',(req,res) => {
-  
-    res.status(200).send({status:200, message:'Hello Added ',data:movies})
-  }) ;
 
+  res.status(200).send({status:200, message:'Hello Added ',data:years})
+   
+  }) ;
+  
+  app.get('/movies/read/by-date',(req,res) => {
+    movies.sort((a, b) => a.year - b.year);
+  res.status(200).send({status:200, message:'listed by date',data:movies})
+    }) ;
+  
+    app.get('/movies/read/by-rating',(req,res) => {
+      movies.sort((a, b) => a.rating - b.rating);
+    res.status(200).send({status:200, message:'listed by Rating',data:movies})
+      }) ;
+    
+      app.get('/movies/read/by-title',(req,res) => {
+        movies.sort((a, b) => a.title.localeCompare(b.title));
+      res.status(200).send({status:200, message:'listed by Title',data:movies})
+        }) ;
+      
 
   app.post('/movies/create',(req,res) => {
   

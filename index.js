@@ -3,6 +3,13 @@ const port = 3000;
 const app = express();
 
 
+const movies = [
+  { title: 'Jaws', year: 1975, rating: 8 },
+  { title: 'Avatar', year: 2009, rating: 7.8 },
+  { title: 'Brazil', year: 1985, rating: 8 },
+  { title: 'الإرهاب والكباب', year: 1992, rating: 6.2 }
+]
+
 app.get('/', (req, res) => {
     res.send('OkkK');
   });
@@ -36,6 +43,34 @@ app.get('/search', (req, res) => {
   app.use('/test', (req, res) => {
     res.status(200).send({status:200, message:"ok"})
   });
+
+
+
+  app.get('/movies/read',(req,res) => {
+  
+    res.status(200).send({status:200, message:'Hello Added ',data:movies})
+  }) ;
+
+
+  app.post('/movies/create',(req,res) => {
+  
+    res.status(200).send({status:200, message:'Hello '})
+  }) ;
+
+
+  app.put('/movies/update',(req,res) => {
+  
+    res.status(200).send({status:200, message:'Hello '})
+  }) ;
+
+
+  app.delete('/movies/delete',(req,res) => {
+  
+    res.status(200).send({status:200, message:'Hello '})
+  }) ;
+  
+
+
 
 
 

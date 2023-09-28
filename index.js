@@ -20,11 +20,12 @@ app.get('/time', (req, res) => {
   const now = new Date();
   const hours = now.getHours();
   const seconds = now.getSeconds(); 
-  const time = hours+""+seconds;
+  const time = hours+":"+seconds;
 
   res.status(200).send({status:200, message:time})
 });
 
+// step 4
 app.get('/hello/:id',(req,res) => {
   const {id} = req.params;
   res.status(200).send({status:200, message:`Hello ${id}`})
@@ -45,29 +46,15 @@ app.get('/search', (req, res) => {
   });
 
 
+// step 5
 
   app.get('/movies/read',(req,res) => {
 
-  res.status(200).send({status:200, message:'Hello Added ',data:years})
+  res.status(200).send({status:200, message:'Hello Added ',data:movies})
    
   }) ;
   
-  app.get('/movies/read/by-date',(req,res) => {
-    movies.sort((a, b) => a.year - b.year);
-  res.status(200).send({status:200, message:'listed by date',data:movies})
-    }) ;
-  
-    app.get('/movies/read/by-rating',(req,res) => {
-      movies.sort((a, b) => a.rating - b.rating);
-    res.status(200).send({status:200, message:'listed by Rating',data:movies})
-      }) ;
-    
-      app.get('/movies/read/by-title',(req,res) => {
-        movies.sort((a, b) => a.title.localeCompare(b.title));
-      res.status(200).send({status:200, message:'listed by Title',data:movies})
-        }) ;
-      
-
+ 
   app.post('/movies/create',(req,res) => {
   
     res.status(200).send({status:200, message:'Hello '})
@@ -85,14 +72,31 @@ app.get('/search', (req, res) => {
     res.status(200).send({status:200, message:'Hello '})
   }) ;
   
+// step 6
+
+  app.get('/movies/read/by-date',(req,res) => {
+    movies.sort((a, b) => a.year - b.year);
+  res.status(200).send({status:200, message:'listed by date',data:movies})
+    }) ;
+  
+    app.get('/movies/read/by-rating',(req,res) => {
+      movies.sort((a, b) => a.rating - b.rating);
+    res.status(200).send({status:200, message:'listed by Rating',data:movies})
+      }) ;
+    
+      app.get('/movies/read/by-title',(req,res) => {
+        movies.sort((a, b) => a.title.localeCompare(b.title));
+      res.status(200).send({status:200, message:'listed by Title',data:movies})
+        }) ;
+
+        // step 7
+   
+        app.get('/movies/read/id/:id',(req,res) => {
+          const {id} = req.params;
+          res.status(200).send({status:200, message:`Hello ${id}`})
+        }) ;
 
 
-
-
-
-//   app.listen(port, () => {
-//     console.log(`Server is listening on port ${port}`);
-//   });
 
 
 app.listen(port,function(req,res){
